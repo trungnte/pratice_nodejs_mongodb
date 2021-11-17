@@ -45,7 +45,7 @@ app.post('/posts/store', (req, res) => {
     console.log(req.body);
     // res.redirect('/');
     // model creates a new doc with browser data
-    BlogPost.create(req.body, (err, post) => {
+    BlogPost.create(req.body, (err, blogpost) => {
         if (err) {
             console.log(err);
             res.redirect('/');
