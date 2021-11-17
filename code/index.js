@@ -16,11 +16,27 @@ app.use(express.static('views'));
 
 app.get('/', (req, res) => {
     // res.sendFile(path.resolve(__dirname, 'pages/index.html'));
-    res.render('index');
+    // res.render('index');
+    BlogPost.find({}, (err, posts) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(posts);
+            res.render('index', { blogposts: posts });
+        }
+    });
 });
 
 app.get('/index.html', (req, res) => {
-    res.render('index');
+    // res.render('index');
+    BlogPost.find({}, (err, posts) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(posts);
+            res.render('index', { blogposts: posts });
+        }
+    });
 });
 
 app.get('/contact.html', (req, res) => {
@@ -28,9 +44,18 @@ app.get('/contact.html', (req, res) => {
     res.render('contact');
 });
 
-app.get('/post.html', (req, res) => {
-    // res.sendFile(path.resolve(__dirname, 'pages/post.html'));
-    res.render('post');
+// app.get('/post.html', (req, res) => {
+//     // res.sendFile(path.resolve(__dirname, 'pages/post.html'));
+//     res.render('post');
+// });
+app.get('/post/:id', (req, res) => {
+    BlogPost.findById(req.params.id, (err, detailPost) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render('post', { detailPost });
+        }
+    });
 });
 
 app.get('/about.html', (req, res) => {
