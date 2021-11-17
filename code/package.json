@@ -4,15 +4,14 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "ejs": "^3.1.6",
-    "mongoose": "^6.0.12"
-  },
-  "devDependencies": {
-    "express": "^5.0.0-alpha.8",
-    "nodemon": "^2.0.15"
+    "mongoose": "^6.0.12",
+    "express": "^5.0.0",
+    "nodemon": "^2.0.15" 
   },
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
     "test": "node index.js"
   },
   "author": "Trung",
