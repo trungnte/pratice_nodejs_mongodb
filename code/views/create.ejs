@@ -22,7 +22,7 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
-                        <form action="/posts/store" method="POST">
+                        <form action="/posts/store" method="POST" enctype="multipart/form-data">
                             <div class="control-group">
                                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
                                     <label>Title</label>
@@ -39,6 +39,14 @@
                                 </div>
                             </div>
                             <br>
+
+                            <div class="control-group">
+                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                    <label>Image</label>
+                                    <input class="form-control" type="file" placeholder="Image" id="image" name="image" required="required" data-validation-required-message="Please enter a image.">
+                                    <!-- <p class="help-block text-danger"></p> -->
+                                </div>
+                            </div>
 
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-lg btn-block" id="sendMessageButton">Create</button>

@@ -8,6 +8,8 @@ RUN npm install
 RUN npm install express
 RUN npm install ejs
 RUN npm install mongoose
+RUN npm install body-parser
+RUN npm install express-fileupload
 
 EXPOSE 5000
 CMD [ "npm", "start" ]

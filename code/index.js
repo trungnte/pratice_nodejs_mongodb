@@ -7,12 +7,17 @@ const ejs = require('ejs');
 
 const BlogPost = require('./models/BlogPost.js');
 
+const fileUpload = require('express-fileupload');
+
+app.use(fileUpload());
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('view engine', 'ejs');
 
 app.use(express.static('views'));
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
     // res.sendFile(path.resolve(__dirname, 'pages/index.html'));
@@ -67,16 +72,28 @@ app.get('/posts/new', (req, res) => {
 });
 
 app.post('/posts/store', (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     // res.redirect('/');
-    // model creates a new doc with browser data
-    BlogPost.create(req.body, (err, blogpost) => {
-        if (err) {
-            console.log(err);
-            res.redirect('/');
-        } else {
-            res.redirect('/');
-        }
+
+    let image = req.files.image;
+    image.mv(path.resolve(__dirname, 'public/upload', image.name), 
+        (err) => {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log('Uploaded!');
+                // model creates a new doc with browser data
+                BlogPost.create({...req.body,
+                            image: '/upload/' + image.name}, 
+                    (err, blogpost) => {
+                    if (err) {
+                        console.log(err);
+                        res.redirect('/');
+                    } else {
+                        res.redirect('/');
+                    }
+                });
+            }
     });
 });
 

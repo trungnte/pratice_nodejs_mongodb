@@ -15,7 +15,8 @@ const BlogPostSchema = new Schema({
         like this because we need 'default' */
         type: Date,
         default: new Date()
-    }
+    },
+    image: String
 });
 
 const BlogPost = mongooes.model('BlogPost', BlogPostSchema);
