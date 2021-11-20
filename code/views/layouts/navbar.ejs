@@ -11,7 +11,16 @@
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/about.html">About</a></li>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/post.html">Sample Post</a></li>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/contact.html">Contact</a></li>
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/posts/new">Posts New</a></li>
+                <% if(loggedIn) { %>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/posts/new">New Post</a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/auth/logout">Log Out</a></li>
+                <% } %>
+                
+                <% if(!loggedIn) { %>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/auth/register">New User</a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/auth/login">Login</a></li>
+                <% } %>
+
             </ul>
         </div>
     </div>

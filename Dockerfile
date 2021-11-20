@@ -10,6 +10,8 @@ RUN npm install ejs
 RUN npm install mongoose
 RUN npm install body-parser
 RUN npm install express-fileupload
+RUN npm install bcrypt
+RUN npm install express-session
 
 EXPOSE 5000
 CMD [ "npm", "start" ]
